@@ -71,7 +71,6 @@ public class MarkdownParseTest {
         assertEquals(true, actual);
     }
 
-    /*
     @Test
     public void MarkdownParseTest6() throws IOException {
         Path fileName = Path.of("test-file6.md");
@@ -82,7 +81,6 @@ public class MarkdownParseTest {
         boolean actual = links.equals(expected);
         assertEquals(true, actual);
     }
-    */
 
     @Test
     public void MarkdownParseTest7() throws IOException {
