@@ -18,15 +18,13 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
             if (openBracket > -1 && closeBracket > -1 && openParen == closeBracket + 1 && closeParen > -1) {
                 if (openBracket == 0 || !markdown.substring(openBracket -1, openBracket).equals("!")) {
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
-                        currentIndex = closeParen + 1;
-                    /*if (markdown.substring(openBracket, closeBracket).indexOf("link") > -1) {
+                    if (markdown.substring(openBracket, closeBracket).indexOf("link") > -1) {
                         toReturn.add(markdown.substring(openParen + 1, closeParen));
                         currentIndex = closeParen + 1;
                     }
                     else {
                         currentIndex ++;
-                    }*/
+                    }
                 }
                 else {
                     currentIndex ++;
