@@ -103,4 +103,16 @@ public class MarkdownParseTest {
         boolean actual = links.equals(expected);
         assertEquals(true, actual);
     }
+
+    @Test
+    public void MarkdownParseTest9() throws IOException {
+        Path fileName = Path.of("test.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("page.com");
+
+        boolean actual = links.equals(expected);
+        assertEquals(true, actual);
+    }
 }
