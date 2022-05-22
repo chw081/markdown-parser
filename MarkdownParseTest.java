@@ -116,4 +116,41 @@ public class MarkdownParseTest {
         boolean actual = links.equals(expected);
         assertEquals(true, actual);
     }
+
+    @Test
+    public void testSnippet1() throws IOException {
+        Path fileName = Path.of("Snippet1.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("`google.com");
+        boolean actual = links.equals(expected);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    public void testSnippet2() throws IOException {
+        Path fileName = Path.of("Snippet2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("a.com");
+        expected.add("a.com(())");
+        expected.add("example.com");
+
+        boolean actual = links.equals(expected);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    public void testSnippet3() throws IOException {
+        Path fileName = Path.of("Snippet3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+
+        boolean actual = links.equals(expected);
+        assertEquals(true, actual);
+    }
 }
