@@ -21,16 +21,13 @@ public class MarkdownParse {
                     if (markdown.substring(openParen, closeParen).indexOf(" ") == -1) {
                         toReturn.add(markdown.substring(openParen + 1, closeParen));
                         currentIndex = closeParen + 1;
-                    }
-                    else {
+                    } else {
                         currentIndex ++;
                     }
-                }
-                else {
+                } else {
                     currentIndex ++;
                 }
-            }
-            else {
+            } else {
                 currentIndex ++;
             }
         }
