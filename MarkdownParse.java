@@ -17,22 +17,21 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             if (openBracket > -1 && closeBracket > -1 && openParen == closeBracket + 1 && closeParen > -1) {
+                //int manyLines = markdown.substring(openBracket, closeBracket).indexOf("\n\n");
                 if (openBracket == 0 || !markdown.substring(openBracket -1, openBracket).equals("!")) {
-                    if (markdown.substring(openParen, closeParen).indexOf(" ") == -1) {
-                        toReturn.add(markdown.substring(openParen + 1, closeParen));
-                        currentIndex = closeParen + 1;
-                    }
-                    else {
-                        currentIndex ++;
-                    }
-                }
-                else {
-                    currentIndex ++;
-                }
-            }
-            else {
-                currentIndex ++;
-            }
+                    if (markdown.substring(openBracket, closeBracket).indexOf("\n\n") == -1) {
+                        if (markdown.substring(openParen, closeParen).indexOf("\n\n") == -1) {
+                            if (markdown.substring(openParen, closeParen).indexOf(" ") == -1) {
+                                //toReturn.add(markdown.substring(openParen + 1, closeParen));
+                                String link = markdown.substring(openParen + 1, closeParen);
+                                while (link.indexOf("\n") > -1) { link = link.replace("\n", ""); }
+                                toReturn.add(link);
+                                currentIndex = closeParen + 1;
+                            } else { currentIndex ++; }
+                        } else { currentIndex ++; }
+                    } else { currentIndex ++; }
+                } else { currentIndex ++; }
+            } else { currentIndex ++;}
         }
 
         return toReturn;
@@ -45,3 +44,9 @@ public class MarkdownParse {
 	    System.out.println(links);
     }
 }
+
+
+/*
+    int openTicks = 
+    if ()
+*/
