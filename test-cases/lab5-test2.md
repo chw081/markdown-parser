@@ -1,1 +1,2 @@
-![](/url)
+[link](<foo
+bar>)
