@@ -24,9 +24,21 @@ public class MarkdownParse {
                             if (markdown.substring(openParen, closeParen).indexOf(" ") == -1) {
                                 //toReturn.add(markdown.substring(openParen + 1, closeParen));
                                 String link = markdown.substring(openParen + 1, closeParen);
-                                while (link.indexOf("\n") > -1) { link = link.replace("\n", ""); }
-                                toReturn.add(link);
-                                currentIndex = closeParen + 1;
+                                boolean valid = true;
+                                while (link.indexOf("\n") > -1) { 
+                                    if (link.indexOf("\n") == openParen + 1 || link.indexOf("\n") == closeParen - 1) {
+                                        link = link.replace("\n", ""); 
+                                    }
+                                    else {
+                                        valid = false;
+                                        currentIndex ++;
+                                        break;
+                                    }
+                                }
+                                if (valid) {
+                                    toReturn.add(link);
+                                    currentIndex = closeParen + 1;
+                                }
                             } else { currentIndex ++; }
                         } else { currentIndex ++; }
                     } else { currentIndex ++; }
